@@ -1,9 +1,8 @@
 import DiffMatchPatch from 'diff-match-patch'
 
-export const dmp = new DiffMatchPatch()
-export const differenceToPrettyHtml = (difference) => dmp.diff_prettyHtml(difference)
-export const difference = (str1, str2) => dmp.diff_main(str1, str2)
-export const differenceOnlyWithCorrections = (difference) => {
+const dmp = new DiffMatchPatch()
+
+const differenceOnlyWithCorrections = (difference) => {
     for (let i = 0; i < difference.length; i++) {
         if (difference.at(i).at(0) === -1) {
             difference.splice(i, 1)
@@ -12,8 +11,11 @@ export const differenceOnlyWithCorrections = (difference) => {
     }
     return difference
 }
-export const differenceToString = (difference) => {
+
+export const differenceToString = (str1, str2) => {
+    let difference = differenceOnlyWithCorrections(dmp.diff_main(str1, str2))
     let differenceString = ''
+
     for (let i = 0; i < difference.length; i++) {
         if (difference.at(i).at(0) === 1) {
             differenceString += `<corrected>${difference.at(i).at(1)}</corrected>`
@@ -21,5 +23,7 @@ export const differenceToString = (difference) => {
             differenceString += difference.at(i).at(1)
         }
     }
+
     return differenceString
 }
+
