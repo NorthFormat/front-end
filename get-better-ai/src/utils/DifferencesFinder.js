@@ -14,7 +14,7 @@ const deleteMistakes = (difference) => {
 }
 
 // convert difference list to string with highlighted corrected letters
-export const differenceToString = (str1, str2) => {
+export const highlightCorrected = (str1, str2) => {
     let difference = deleteMistakes(dmp.diff_main(str1, str2))
     let differenceString = ''
 
