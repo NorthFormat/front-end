@@ -2,7 +2,8 @@ import DiffMatchPatch from 'diff-match-patch'
 
 const dmp = new DiffMatchPatch()
 
-const differenceOnlyWithCorrections = (difference) => {
+// deleting mistakes from difference list and return new version
+const deleteMistakes = (difference) => {
     for (let i = 0; i < difference.length; i++) {
         if (difference.at(i).at(0) === -1) {
             difference.splice(i, 1)
@@ -12,8 +13,9 @@ const differenceOnlyWithCorrections = (difference) => {
     return difference
 }
 
+// convert difference list to string with highlighted corrected letters
 export const differenceToString = (str1, str2) => {
-    let difference = differenceOnlyWithCorrections(dmp.diff_main(str1, str2))
+    let difference = deleteMistakes(dmp.diff_main(str1, str2))
     let differenceString = ''
 
     for (let i = 0; i < difference.length; i++) {
