@@ -287,3 +287,11 @@ label input[type=checkbox]{
       transform: rotate(360deg);
     }
   }
+
+  .good{
+    background: green;
+  }
+
+  .bad{
+    background: red;
+  }
