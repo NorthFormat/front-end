@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 
-function TextField(){
+function TextField({ setTextFieldState }){
     return (
-        <textarea className='text-field' type="text" placeholder='Напишите что-нибудь...'/>
+        <textarea className='text-field'
+                  type="text"
+                  placeholder='Напишите что-нибудь...'
+                  onChange={() => setTextFieldState(true)
+        }/>
     )
 }
 

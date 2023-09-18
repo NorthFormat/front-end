@@ -11,9 +11,11 @@ import ColorChoose from '../components/ColorChoose';
 import History from '../components/History';
 import ConvertButton from '../components/ConvertButton';
 import AlterLine from '../components/AlterLine';
+import {useState} from "react";
 
 
 function FormatterPage() {
+  const [textFieldState, setTextFieldState] = useState(true)
 
   const { theme, setTheme } = useTheme();
   
@@ -27,8 +29,8 @@ function FormatterPage() {
         <Logo />
         <div className='input-block'>
           <div className='field-button-group'>
-            <TextField />
-            <ConvertButton />
+            <TextField setTextFieldState={setTextFieldState}/>
+            <ConvertButton textFieldState={textFieldState} setTextFieldState={setTextFieldState}/>
           </div>
           <AlterLine />
           <InputSelector />
