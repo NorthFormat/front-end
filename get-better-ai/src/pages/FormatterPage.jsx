@@ -12,10 +12,15 @@ import History from '../components/History';
 import ConvertButton from '../components/ConvertButton';
 import AlterLine from '../components/AlterLine';
 import {useState} from "react";
+import SpeechRecognition, {useSpeechRecognition} from "react-speech-recognition";
 
 
 function FormatterPage() {
+  const { transcript, listening } = useSpeechRecognition()
+
   const [textFieldState, setTextFieldState] = useState(true)
+  const [record, setRecord] = useState(listening)
+  // const [fileText, setFileText] = useState(null)
 
   const { theme, setTheme } = useTheme();
   
@@ -29,11 +34,11 @@ function FormatterPage() {
         <Logo />
         <div className='input-block'>
           <div className='field-button-group'>
-            <TextField setTextFieldState={setTextFieldState}/>
+            <TextField setTextFieldState={setTextFieldState} />
             <ConvertButton textFieldState={textFieldState} setTextFieldState={setTextFieldState}/>
           </div>
           <AlterLine />
-          <InputSelector />
+          <InputSelector setTextFieldState={setTextFieldState}/>
         </div>
         
         <Filter />
