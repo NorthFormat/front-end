@@ -1,0 +1,21 @@
+html[data-theme='dark']{
+    --bg-color: #13121D;
+    --half-active-bg-color: #211F32;
+    --btn-color: #E16308;
+    --btn-color-hover: #ff8731;
+    --textfield-color: #F5F2FF;
+    --filter-bg-color: #565caf;
+}
+
+html[data-theme='light']{
+    --bg-color: #dbdae7;
+    --half-active-bg-color: #ffffff;
+    --btn-color: #0402a8;
+    --btn-color-hover: #4745c7;
+    --textfield-color: #F5F2FF;
+    --filter-bg-color: #000000;
+}
+
+html[data-theme='cute']{
+    
+}

@@ -1,0 +1,289 @@
+@font-face {
+    font-family: 'Rubik';
+    src: url(../assets/fonts/Rubik.ttf);
+}
+
+html, body{
+    margin: 0px;
+    height: 100%;
+    background: var(--bg-color);
+}
+
+html{
+    font-size: 15px;
+}
+
+#root{
+    height: 100%;
+}
+
+.split-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (orientation:portrait){
+    .split-container{
+        flex-direction: column;
+    }
+}
+
+.half {
+    flex: 1;
+    transition: flex-grow 0.3s;
+    padding: 60px;
+    gap: 50px;
+
+    display: flex;
+    flex-direction: column;
+
+    transition: 0.3s ease;
+}
+  
+.half:hover {
+    flex-grow: 2;
+    background: var(--half-active-bg-color);
+}
+
+.basic-button{
+    height: 100%;
+    width:100%;
+    padding: 20px;
+    background: var(--btn-color);
+    border-radius: 20px;
+    border: none;
+
+    transition: 0.3s ease;
+}
+
+.basic-button:hover{
+    background:  var(--btn-color-hover);
+}
+
+.main-button{
+    height: 100px;
+    width: 100px;
+}
+
+.main-button img{
+    width: 100%;
+    height: 100%;
+}
+
+button img{
+    max-height: 100%;
+}
+
+.text-field{
+    height: 200px;
+    width: 100%;
+
+    border-radius: 20px;
+    background: var(--textfield-color);
+    padding: 20px;
+    min-height: 1.2rem;
+    resize: vertical;
+
+    display: flex;
+    align-items: flex-start;
+    vertical-align: top;
+
+    font-size: 1.3rem;
+}
+
+.field-button-group{
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    position: relative;
+}
+
+.field-button-group button{
+    position: absolute;
+    right: -110px;
+}
+
+
+.input-selector{
+    height: 90px;
+    gap: 20px;
+
+    display: flex;
+}
+
+.filter{
+    font-family: 'Rubik';
+    color: white;
+    font-size: 1.5rem;
+
+    background: var(--filter-bg-color);
+    padding: 20px;
+    display: flex;
+    border-radius: 20px;
+
+    flex-direction: column;
+    gap: 10px;
+
+    transition: 0.3s ease;
+}
+
+label input[type=checkbox]{
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    border-radius: 10px;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+}
+
+.result-actions{
+
+}
+
+.logo-style{
+    display: flex;
+    flex-direction: row;
+    color: white;
+    gap: 10px;
+}
+
+.logo-style *{
+    font-family: 'Rubik';
+    border-radius: 20px;
+    padding: 10px 15px;
+    background: #523fff;
+}
+
+.logo-style *:first-child{
+    background: #2b17e4;
+}
+
+.logo-style *:last-child{
+    background: #7667ff;
+}
+
+.color-pick{
+    font-family: 'Rubik';
+    color: white;
+
+    height: 100px;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.color-pick button{
+    height: 30px;
+    width: 40px;
+    border-radius: 10px;
+}
+
+#dark-btn{ background: #523fff; }
+
+#light-btn{ background: white; }
+
+.alter-line{
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+
+    color: rgb(184, 184, 184);
+    font-family: 'Rubik';
+}
+
+.alter-line div{
+    height: 10%;
+    width: 100%;
+    background: rgb(134, 134, 134);
+    border-radius: 10px;
+}
+
+.history-group{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.history-group h3{
+    font-family: 'Rubik';
+    font-size: 1.5rem;
+    color: white;
+    text-align: center;
+}
+
+#history-container{
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.stored-note{
+    font-family: 'Rubik';
+    background: #6b5e88;
+    width: 100%;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.stored-note h3{
+    color: white;
+    font-size: 1.5rem;
+    text-align: start;
+}
+
+.stored-note div{
+    color: white;
+    font-size: 2rem;
+}
+
+.meta-note{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.meta-note h3{
+    height: 10px;
+    padding: 0;
+    margin: 0;
+}
+
+.meta-note button{
+    background: rgb(252, 54, 54);
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    
+}
+
+.input-block{
+    display: flex;
+    flex-direction: column;
+}
+
+.loading{
+    background: #542300;
+}
+
+.loading img{
+    animation: spin 1s infinite;
+}
+
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
