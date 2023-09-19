@@ -6,6 +6,7 @@ import Filter from '../components/Filter';
 //import '../css/css-reset.css'
 import '../css/color-index.css';
 import '../css/app.css';
+import '../css/equalizer.css'
 import {useTheme} from '../hooks/use-theme';
 import ColorChoose from '../components/ColorChoose';
 import History from '../components/History';
