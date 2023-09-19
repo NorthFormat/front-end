@@ -14,8 +14,8 @@ function ResultField({resultResponse}) {
     // }
 
     return (
-        <div className='text-field'>
-            {result ? result : <></>}
+        <div className='text-field' dangerouslySetInnerHTML={{__html: resultResponse}}>
+            {/*{result ? result : <></>}*/}
         </div>
     )
 }

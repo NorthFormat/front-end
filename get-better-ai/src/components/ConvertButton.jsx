@@ -51,9 +51,9 @@ function ConvertButton({textFieldState, setTextFieldState, checkBoxesState, setC
                 return response.text()
             })
             .then(response => {
-                console.log(response)
+                console.log(response.substring(1, response.length - 2))
                 setButton(ButtonStates.ready)
-                setResult(response)
+                setResult(response.substring(1, response.length - 2))
             })
             .catch((error) => {
                 setButton(ButtonStates.error)
