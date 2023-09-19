@@ -1,5 +1,6 @@
 import React from 'react'
 import Document from '../assets/images/svg/document.svg'
+import Delete from '../assets/images/svg/close.svg'
 
 export default function FilePreview({name, type}) {
     function setByType(type){
@@ -13,9 +14,12 @@ export default function FilePreview({name, type}) {
         return img;
     }
   return (
-    <div>
+    <div className='attachment'>
         <img src={setByType(type)}/>
         <h3>{name}</h3>
+        <button>
+          <img src={Delete} alt="" />
+        </button>
     </div>
   )
 }
