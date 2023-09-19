@@ -379,3 +379,17 @@ label input[type=checkbox]{
   .section::-webkit-scrollbar {
     width: 10px;
 }
+
+::-webkit-scrollbar {
+    width: 10px; /* Установите ширину скроллбара по вашему усмотрению */
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent; /* Прозрачный фон дорожки */
+    border-radius: 5px; /* Скруглить углы дорожки */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #1e008a; /* Цвет скроллбара */
+    border-radius: 5px; /* Скруглить углы ползунка */
+}
