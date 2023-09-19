@@ -17,6 +17,7 @@ import SpeechRecognition, {useSpeechRecognition} from "react-speech-recognition"
 
 function FormatterPage() {
     const {transcript, listening} = useSpeechRecognition()
+    const [docText, setDocText] = useState(null)
 
     const [textFieldState, setTextFieldState] = useState(true)
     const [checkBoxesState, setCheckboxesState] = useState({
@@ -53,7 +54,7 @@ function FormatterPage() {
                 <Logo/>
                 <div className='input-block'>
                     <div className='field-button-group'>
-                        <TextField setTextFieldState={setTextFieldState}/>
+                        <TextField setTextFieldState={setTextFieldState} />
                         <ConvertButton textFieldState={textFieldState}
                                        setTextFieldState={setTextFieldState}
                                        checkBoxesState={checkBoxesState}
@@ -61,7 +62,7 @@ function FormatterPage() {
                         />
                     </div>
                     <AlterLine/>
-                    <InputSelector setTextFieldState={setTextFieldState}/>
+                    <InputSelector setTextFieldState={setTextFieldState} setDocText={setDocText}/>
                 </div>
 
                 <Filter checkBoxesState={checkBoxesState} setCheckBoxesState={setCheckboxesState}/>
@@ -73,7 +74,7 @@ function FormatterPage() {
                 <History/>
 
             </div>
-            <button onClick={() => console.log(checkBoxesState)}>Тест</button>
+            <button onClick={() => console.log(docText)}>Тест</button>
         </div>
     );
 }

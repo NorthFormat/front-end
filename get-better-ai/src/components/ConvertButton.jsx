@@ -22,15 +22,6 @@ function ConvertButton({textFieldState, setTextFieldState, checkBoxesState, setC
         }
     })
 
-    const handleCheckBoxesState = () => {
-        let newCheckBoxState = {
-            checkBox1: {checked: checkBoxesState.checkBox1.checked},
-            checkBox2: {checked: checkBoxesState.checkBox2.checked},
-            checkBox3: {checked: checkBoxesState.checkBox3.checked}
-        }
-        checkBoxesStateHandler(newCheckBoxState, setCheckBoxesState)
-    }
-
     const fakeFetch = async () => {
         setTextFieldState(false)
         await setButton(ButtonStates.loading)
@@ -51,11 +42,9 @@ function ConvertButton({textFieldState, setTextFieldState, checkBoxesState, setC
         <button className={`basic-button main-button ${buttonState.class}`}
                 onClick={() => {
                     fakeFetch()
-                        .then(() => {handleCheckBoxesState()})
-                        .catch(error => {
+                            .catch(error => {
                             console.log(error)
                         })
-                    handleCheckBoxesState(checkBoxesState, setCheckBoxesState)
                 }}>
             <img src={buttonState.pic} alt=""/>
         </button>
