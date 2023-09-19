@@ -5,7 +5,7 @@ function FileUploadButton({ onFileSelect, imageSource, extraClass }) {
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
-    if (selectedFile && selectedFile.name.endsWith('.docx')) {
+    if (selectedFile && selectedFile.name.endsWith('.txt')) {
         onFileSelect(selectedFile);
     }
     fileInputRef.current.value = '';
@@ -16,7 +16,7 @@ function FileUploadButton({ onFileSelect, imageSource, extraClass }) {
       <input
         type="file"
         ref={fileInputRef}
-        accept=".docx"
+        accept=".txt"
         style={{ display: 'none' }}
         onChange={handleFileChange}
       />

@@ -1,17 +1,22 @@
-import React, {Component, useState} from 'react'
+import React, {Component, useEffect, useState} from 'react'
 import {useSpeechRecognition} from "react-speech-recognition";
 
-function TextField({ setTextFieldState, docText}) {
-    const { transcript, listening } = useSpeechRecognition()
+function TextField({setTextFieldState, docText}) {
+    const {transcript, listening} = useSpeechRecognition()
+    const [value, setValue] = useState(null)
 
-    const handleValue = () => {
+    useEffect(() => {
+        handleTextSource()
+    }, [listening, transcript, docText])
+
+    const handleTextSource = () => {
         if (listening && transcript) {
-            return transcript
+            setValue(transcript)
+        } else if (docText) {
+            setValue(docText)
+        } else {
+            setValue(null)
         }
-        if (docText !== '' && !docText) {
-            return docText
-        }
-        return null
     }
 
     return (
@@ -19,7 +24,7 @@ function TextField({ setTextFieldState, docText}) {
                   type="text"
                   placeholder='Напишите что-нибудь...'
                   onChange={() => setTextFieldState(true)}
-                  value={handleValue}
+                  value={value}
         />
     )
 }

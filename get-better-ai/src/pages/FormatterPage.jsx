@@ -56,7 +56,7 @@ function FormatterPage() {
                 <Logo/>
                 <div className='input-block'>
                     <div className='field-button-group'>
-                        <TextField setTextFieldState={setTextFieldState} />
+                        <TextField setTextFieldState={setTextFieldState} docText={docText}/>
                         <ConvertButton textFieldState={textFieldState}
                                        setTextFieldState={setTextFieldState}
                                        checkBoxesState={checkBoxesState}
@@ -77,7 +77,8 @@ function FormatterPage() {
                 <History/>
 
             </div>
-            <button onClick={() => console.log(docText)}>Тест</button>
+            <div onClick={() => {
+                console.log(docText)}}>Test</div>
         </div>
     );
 }
