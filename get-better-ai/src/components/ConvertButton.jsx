@@ -13,7 +13,7 @@ const ButtonStates = {
     error: {pic: Error, class: "error"}
 }
 
-function ConvertButton({textFieldState, setTextFieldState, checkBoxesState, setCheckBoxesState, setResult}) {
+function ConvertButton({textFieldState, setTextFieldState, checkBoxesState, setCheckBoxesState, setResult, insertedValue}) {
     const [buttonState, setButton] = useState(ButtonStates.active);
 
     useEffect(() => {
@@ -23,9 +23,24 @@ function ConvertButton({textFieldState, setTextFieldState, checkBoxesState, setC
     })
 
     const fakeFetch = async () => {
+
+        const body = {
+            text: insertedValue,
+            "grammatic": checkBoxesState.checkBox1.checked,
+            "paragraph": checkBoxesState.checkBox2.checked,
+            "foramt": checkBoxesState.checkBox3.checked
+        }
+
+        const options = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json',},
+            body: JSON.stringify(body)
+        }
+
         setTextFieldState(false)
+
         await setButton(ButtonStates.loading)
-        fetch("http://localhost:8080/users/delay")
+        fetch("http://80.249.144.137/changetext")
             .then(response => {
                 setTextFieldState(false)
                 if (!response.ok) throw response

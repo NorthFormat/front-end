@@ -20,6 +20,8 @@ function FormatterPage() {
     const {transcript, listening} = useSpeechRecognition()
     const [docText, setDocText] = useState(null)
     const [resultResp, setResultField] = useState('')
+    const [changedText, setChangedText] = useState(null)
+    const [insertedValue, setInsertedValue] = useState('')
 
     const [RightHalfActive, setHalfActive] = useState(false);
     const [textFieldState, setTextFieldState] = useState(true)
@@ -58,12 +60,13 @@ function FormatterPage() {
                 <Logo/>
                 <div className='input-block'>
                     <div className='field-button-group'>
-                        <TextField setTextFieldState={setTextFieldState} docText={docText}/>
+                        <TextField setTextFieldState={setTextFieldState} docText={docText} setInsertedValue={setInsertedValue}/>
                         <ConvertButton textFieldState={textFieldState}
                                        setTextFieldState={setTextFieldState}
                                        checkBoxesState={checkBoxesState}
                                        setCheckBoxesState={setCheckboxesState}
                                        setResult={setResultField}
+                                       insertedValue={insertedValue}
                         />
                     </div>
                     <AlterLine/>
@@ -80,8 +83,8 @@ function FormatterPage() {
                 <History/>
 
             </div>
-            <div onClick={() => {
-                console.log(docText)}}>Test</div>
+            {/*<div onClick={() => {*/}
+            {/*    console.log(insertedValue)}}>Test</div>*/}
         </div>
     );
 }

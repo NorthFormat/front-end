@@ -35,13 +35,11 @@ function InputSelector({setTextFieldState, setDocText}) {
                     SpeechRecognition.startListening({
                         language: 'ru'
                     })
-                    console.log(listening)
                 }}/>
                 <FileUploadButton onFileSelect={async (selected) => {
                     await upload(selected)
                         .then(response => {
-                            let tempText = response.toString()
-                            console.log(tempText)
+                            let tempText = response
                             setDocText(tempText)
                         })
                         .catch(error => {
@@ -62,9 +60,7 @@ function InputSelector({setTextFieldState, setDocText}) {
             </div>
             <div id='voice-group' className={`input-selector ${selectorState["2"] ? '' : 'hidden'}`}>
                 <BasicButton imageSource={Done} extraClass={'good'} onClick={() => {
-                    console.log("before " + transcript)
                     resetTranscript()
-                    console.log("after " + transcript)
                     setSelectorState(SelectorStates.buttons);
                 }}/>
                 <Equalizer />

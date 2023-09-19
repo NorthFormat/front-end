@@ -3,18 +3,19 @@ import React, { useEffect, useState } from 'react'
 function ResultField({resultResponse}) {
     const [result, setResult] = useState();
 
-    useEffect(()=>{setResult(resultResponse);
-                    addToHistory(resultResponse);
-                    }, [resultResponse]);
+    // useEffect(()=>{setResult(resultResponse);
+    //                 addToHistory(resultResponse);
+    //                 }, [resultResponse]);
 
 
     function addToHistory(newNote){
-        localStorage.setItem('history', [localStorage.getItem('history'), newNote]);
+        let newHistory = JSON.parse(localStorage.getItem('history'))
+        localStorage.setItem('history', JSON.stringify(newHistory));
     }
 
     return (
         <div className='text-field'>
-            { result }
+            { result ? result : <></> }
         </div>
     )
 }

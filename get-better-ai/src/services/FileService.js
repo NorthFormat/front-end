@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8080/files'
+const API_URL = 'http://80.249.144.137/files'
 
 export const upload = (file) => {
     let data = new FormData()
@@ -7,6 +7,7 @@ export const upload = (file) => {
     const options = {
         method: 'POST',
         body: data,
+        header: {'Access-Control-Allow-Origin': '*',}
     };
 
     return fetch(`${API_URL}/upload`, options)
