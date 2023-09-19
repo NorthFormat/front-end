@@ -118,6 +118,13 @@ button img{
     font-size: 1.3rem;
 }
 
+.text-field corrected {
+    background: greenyellow;
+    border-radius: 10px;
+    height: fit-content;
+}
+
+
 .field-button-group{
     width: 100%;
 

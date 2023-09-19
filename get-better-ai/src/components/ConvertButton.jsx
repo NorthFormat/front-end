@@ -4,6 +4,7 @@ import Okay from '../assets/images/svg/okay.svg'
 import Error from "../assets/images/svg/close.svg"
 import {useEffect, useState} from 'react';
 import {checkBoxesStateHandler} from "../hooks/LocalStorageHandler";
+import {highlightCorrected} from "../hooks/DifferencesFinder";
 
 const ButtonStates = {
     active: {pic: Transfer, class: ''},
@@ -51,9 +52,8 @@ function ConvertButton({textFieldState, setTextFieldState, checkBoxesState, setC
                 return response.text()
             })
             .then(response => {
-                console.log(response.substring(1, response.length - 2))
                 setButton(ButtonStates.ready)
-                setResult(response.substring(1, response.length - 2))
+                setResult(response)
             })
             .catch((error) => {
                 setButton(ButtonStates.error)
