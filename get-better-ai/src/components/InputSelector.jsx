@@ -7,6 +7,9 @@ import Done from '../assets/images/svg/okay.svg'
 import Close from '../assets/images/svg/close.svg'
 import Equalizer from '../assets/images/svg/716.gif'
 import SpeechRecognition, {useSpeechRecognition} from "react-speech-recognition";
+import FileUploadButton from './FileUploadButton'
+import FileUpload from './FileUpload'
+import FilePreview from './FilePreview'
 
 const SelectorStates = {
     buttons: {1: true, 2: false, 3: false},
@@ -17,6 +20,7 @@ const SelectorStates = {
 function InputSelector({setTextFieldState}) {
     const [selectorState, setSelectorState] = useState(SelectorStates.buttons)
     const {transcript, listening, resetTranscript} = useSpeechRecognition()
+    const [fileCell, setFile] = useState(<></>);
 
 
     return (
@@ -30,7 +34,12 @@ function InputSelector({setTextFieldState}) {
                     })
                     console.log(listening)
                 }}/>
-                <BasicButton imageSource={DocPic}/>
+                <FileUploadButton onFileSelect={(selected)=>{
+                    setSelectorState(SelectorStates.document);
+                    console.log(selected);
+                    let component = <FilePreview name={selected.name} type={selected.type}/>
+                    setFile(component);
+                }} imageSource={DocPic}/>
                 <BasicButton imageSource={CamPic}/>
             </div>
             <div id='voice-group' className={`input-selector ${selectorState["2"] ? '' : 'hidden'}`}>
@@ -50,7 +59,7 @@ function InputSelector({setTextFieldState}) {
                 />
             </div>
             <div id='document-group' className={`input-selector ${selectorState["3"] ? '' : 'hidden'}`}>
-
+                {fileCell}
             </div>
         </>
     );
