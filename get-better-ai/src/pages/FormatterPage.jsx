@@ -19,6 +19,7 @@ function FormatterPage() {
     const {transcript, listening} = useSpeechRecognition()
     const [docText, setDocText] = useState(null)
 
+    const [RightHalfActive, setHalfActive] = useState(false);
     const [textFieldState, setTextFieldState] = useState(true)
     const [checkBoxesState, setCheckboxesState] = useState({
         checkBox1: {checked: true},
@@ -50,7 +51,8 @@ function FormatterPage() {
 
     return (
         <div className='split-container'>
-            <div className='half'>
+            <div className={`half ${RightHalfActive ? '' : 'half-active'}`} onClick={()=>{setHalfActive(false)}}>
+                <div className={RightHalfActive ? 'cover': 'none'}></div>
                 <Logo/>
                 <div className='input-block'>
                     <div className='field-button-group'>
@@ -67,7 +69,8 @@ function FormatterPage() {
 
                 <Filter checkBoxesState={checkBoxesState} setCheckBoxesState={setCheckboxesState}/>
             </div>
-            <div className='half'>
+            <div className={`half ${RightHalfActive ? 'half-active' : ''}`} onClick={()=>{setHalfActive(true)}}>
+                <div className={RightHalfActive ? 'none': 'cover'}></div>
                 <ColorChoose darkHandle={handleDarkTheme}
                              lightHandle={handleLightTheme}/>
                 <ResultField/>
