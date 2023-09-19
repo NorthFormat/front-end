@@ -13,7 +13,7 @@ const ButtonStates = {
     error: {pic: Error, class: "error"}
 }
 
-function ConvertButton({textFieldState, setTextFieldState, checkBoxesState, setCheckBoxesState}) {
+function ConvertButton({textFieldState, setTextFieldState, checkBoxesState, setCheckBoxesState, setResult}) {
     const [buttonState, setButton] = useState(ButtonStates.active);
 
     useEffect(() => {
@@ -31,7 +31,10 @@ function ConvertButton({textFieldState, setTextFieldState, checkBoxesState, setC
                 if (!response.ok) throw response
                 return response.text()
             })
-            .then(response => setButton(ButtonStates.ready))
+            .then(response => {
+                setButton(ButtonStates.ready)
+                setResult(response)
+            })
             .catch((error) => {
                 setButton(ButtonStates.error)
                 console.log(error)

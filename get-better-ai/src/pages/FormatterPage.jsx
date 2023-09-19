@@ -19,6 +19,7 @@ import SpeechRecognition, {useSpeechRecognition} from "react-speech-recognition"
 function FormatterPage() {
     const {transcript, listening} = useSpeechRecognition()
     const [docText, setDocText] = useState(null)
+    const [resultResp, setResultField] = useState('')
 
     const [RightHalfActive, setHalfActive] = useState(false);
     const [textFieldState, setTextFieldState] = useState(true)
@@ -62,6 +63,7 @@ function FormatterPage() {
                                        setTextFieldState={setTextFieldState}
                                        checkBoxesState={checkBoxesState}
                                        setCheckBoxesState={setCheckboxesState}
+                                       setResult={setResultField}
                         />
                     </div>
                     <AlterLine/>
@@ -74,7 +76,7 @@ function FormatterPage() {
                 <div className={RightHalfActive ? 'none': 'cover'}></div>
                 <ColorChoose darkHandle={handleDarkTheme}
                              lightHandle={handleLightTheme}/>
-                <ResultField/>
+                <ResultField resultResponse={resultResp}/>
                 <History/>
 
             </div>
