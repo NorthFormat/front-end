@@ -295,3 +295,7 @@ label input[type=checkbox]{
   .bad{
     background: red;
   }
+
+  .hidden{
+      display: none;
+  }

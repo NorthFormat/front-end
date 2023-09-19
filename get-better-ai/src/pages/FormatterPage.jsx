@@ -11,7 +11,7 @@ import ColorChoose from '../components/ColorChoose';
 import History from '../components/History';
 import ConvertButton from '../components/ConvertButton';
 import AlterLine from '../components/AlterLine';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import SpeechRecognition, {useSpeechRecognition} from "react-speech-recognition";
 
 
@@ -19,10 +19,21 @@ function FormatterPage() {
   const { transcript, listening } = useSpeechRecognition()
 
   const [textFieldState, setTextFieldState] = useState(true)
+  const [checkBoxesState, setCheckboxesState] = useState(JSON.parse(localStorage.getItem("checkBoxesState")))
   const [record, setRecord] = useState(listening)
   // const [fileText, setFileText] = useState(null)
 
   const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    localStorage.getItem("checkBoxesState")
+        ? setCheckboxesState(JSON.parse(localStorage.getItem("checkBoxesState")))
+        : setCheckboxesState({
+          checkBox1: {checked: true},
+          checkBox2: {checked: true},
+          checkBox3: {checked: true}
+        })
+  }, [])
   
   const handleLightTheme = () => {setTheme('light')};
   const handleDarkTheme = () => {setTheme('dark')};
@@ -41,14 +52,16 @@ function FormatterPage() {
           <InputSelector setTextFieldState={setTextFieldState}/>
         </div>
         
-        <Filter />
+        <Filter checkBoxesState={checkBoxesState} setCheckBoxesState={setCheckboxesState}/>
       </div>
       <div className='half'>
         <ColorChoose darkHandle={handleDarkTheme}
                     lightHandle={handleLightTheme}/>
         <ResultField />
         <History />
+
       </div>
+      <button onClick={() => console.log(checkBoxesState)}>Тест</button>
     </div>
   );
 }

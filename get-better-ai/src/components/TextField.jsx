@@ -9,7 +9,7 @@ function TextField({ setTextFieldState, value}){
                   type="text"
                   placeholder='Напишите что-нибудь...'
                   onChange={() => setTextFieldState(true)}
-                  value={listening ? transcript : null}
+                  value={listening && transcript ? transcript : null}
         />
     )
 }
