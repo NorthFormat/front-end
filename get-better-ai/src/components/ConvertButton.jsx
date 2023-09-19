@@ -25,28 +25,33 @@ function ConvertButton({textFieldState, setTextFieldState, checkBoxesState, setC
     const fakeFetch = async () => {
 
         const body = {
-            text: insertedValue,
+            "text": insertedValue.toString(),
             "grammatic": checkBoxesState.checkBox1.checked,
             "paragraph": checkBoxesState.checkBox2.checked,
-            "foramt": checkBoxesState.checkBox3.checked
+            "format": checkBoxesState.checkBox3.checked
         }
+
 
         const options = {
             method: 'POST',
-            headers: {'Content-Type': 'application/json',},
+            headers: {'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json'},
             body: JSON.stringify(body)
         }
+
+        console.log(options)
 
         setTextFieldState(false)
 
         await setButton(ButtonStates.loading)
-        fetch("http://80.249.144.137/changetext")
+        fetch("https://b75e-95-84-25-131.ngrok-free.app/changetext", options)
             .then(response => {
                 setTextFieldState(false)
                 if (!response.ok) throw response
                 return response.text()
             })
             .then(response => {
+                console.log(response)
                 setButton(ButtonStates.ready)
                 setResult(response)
             })
