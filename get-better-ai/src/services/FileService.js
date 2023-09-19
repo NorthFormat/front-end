@@ -1,16 +1,23 @@
-const API_URL = 'localhost:8080/files'
+const API_URL = 'http://localhost:8080/files'
 
-export const upload = async (file) => {
+export const upload = (file) => {
     let data = new FormData()
-    data.append('name', file)
+    data.append('file', file)
 
     const options = {
         method: 'POST',
-        body: data
+        body: data,
     };
 
-    fetch(`${API_URL}/upload`, options)
+    return fetch(`${API_URL}/upload`, options)
         .then(response => response.text())
-        .then(response => console.log(response))
+        .then(response => {
+            return response
+        })
         .catch(error => console.log(error))
+}
+
+export const decode = (byteArr) => {
+    const decoder = new TextDecoder('utf-8');
+    return decoder.decode(byteArr);
 }

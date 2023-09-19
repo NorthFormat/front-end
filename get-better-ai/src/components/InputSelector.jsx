@@ -11,6 +11,7 @@ import SpeechRecognition, {useSpeechRecognition} from "react-speech-recognition"
 import FileUploadButton from './FileUploadButton'
 import FileUpload from './FileUpload'
 import FilePreview from './FilePreview'
+import {decode, upload} from "../services/FileService";
 
 const SelectorStates = {
     buttons: {1: true, 2: false, 3: false},
@@ -18,7 +19,7 @@ const SelectorStates = {
     document: {1: false, 2: false, 3: true}
 }
 
-function InputSelector({setTextFieldState}) {
+function InputSelector({setTextFieldState, setDocText}) {
     const [selectorState, setSelectorState] = useState(SelectorStates.buttons)
     const {transcript, listening, resetTranscript} = useSpeechRecognition()
     const [fileCell, setFile] = useState(<></>);
@@ -35,12 +36,27 @@ function InputSelector({setTextFieldState}) {
                     })
                     console.log(listening)
                 }}/>
-                <FileUploadButton onFileSelect={(selected)=>{
+                <FileUploadButton onFileSelect={async (selected) => {
+                    await upload(selected)
+                        .then(response => {
+                            let tempText = response.toString()
+                            console.log(tempText)
+                            setDocText(tempText)
+                        })
+                        .catch(error => {
+                            console.log(error)
+                        })
                     setSelectorState(SelectorStates.document);
-                    console.log(selected);
-                    let component = <FilePreview name={selected.name} type={selected.type}/>
+                    let component = <FilePreview name={selected.name}
+                                                 type={selected.type}
+                                                 setFile={setFile}
+                                                 selectorStateHandler={() => {
+                                                     setSelectorState(SelectorStates.buttons)
+                                                 }}
+                                                 setDocText={setDocText}
+                    />;
                     setFile(component);
-                }} imageSource={DocPic}/>
+                }} imageSource={DocPic} setDocText={setDocText}/>
                 <BasicButton imageSource={CamPic}/>
             </div>
             <div id='voice-group' className={`input-selector ${selectorState["2"] ? '' : 'hidden'}`}>
