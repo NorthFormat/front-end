@@ -20,12 +20,14 @@ function TextField({setTextFieldState, docText}) {
     }
 
     return (
-        <textarea className='text-field'
-                  type="text"
-                  placeholder='Напишите что-нибудь...'
-                  onChange={() => setTextFieldState(true)}
-                  value={value}
-        />
+        <>
+            <textarea className='text-field'
+                      type="text"
+                      placeholder='Напишите что-нибудь...'
+                      onChange={() => setTextFieldState(true)}
+                      value={value}
+            />
+        </>
     )
 }
 

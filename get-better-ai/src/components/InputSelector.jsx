@@ -61,8 +61,9 @@ function InputSelector({setTextFieldState, setDocText}) {
             </div>
             <div id='voice-group' className={`input-selector ${selectorState["2"] ? '' : 'hidden'}`}>
                 <BasicButton imageSource={Done} extraClass={'good'} onClick={() => {
-                    SpeechRecognition.stopListening()
-
+                    console.log("before " + transcript)
+                    resetTranscript()
+                    console.log("after " + transcript)
                     setSelectorState(SelectorStates.buttons);
                 }}/>
                 <img style={{height: '60%'}} src={Equalizer} alt=""/>
