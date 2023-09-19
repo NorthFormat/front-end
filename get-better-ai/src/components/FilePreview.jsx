@@ -24,6 +24,7 @@ export default function FilePreview({name, type, setFile, selectorStateHandler, 
                 if (setFile && typeof setFile === "function") {
                     setFile(<></>)
                     selectorStateHandler()
+                    setDocText(' ');
                 }
                 setDocText(null)
             }}>

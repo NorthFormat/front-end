@@ -3,8 +3,12 @@ html[data-theme='dark']{
     --half-active-bg-color: #211F32;
     --btn-color: #E16308;
     --btn-color-hover: #ff8731;
+    --btn-color-active: #80451c;
     --textfield-color: #F5F2FF;
     --filter-bg-color: #565caf;
+    --main-text-color: white;
+    --add-text-color: white;
+    --stored-color: #6b5e88;
 }
 
 html[data-theme='light']{
@@ -12,8 +16,12 @@ html[data-theme='light']{
     --half-active-bg-color: #ffffff;
     --btn-color: #0402a8;
     --btn-color-hover: #4745c7;
+    --btn-color-active: #28276e;
     --textfield-color: #F5F2FF;
     --filter-bg-color: #000000;
+    --main-text-color: rgb(255, 255, 255);
+    --add-text-color: black;
+    --stored-color: black;
 }
 
 html[data-theme='cute']{

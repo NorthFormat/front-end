@@ -6,7 +6,8 @@ import CamPic from '../assets/images/svg/camera.svg'
 import AttachPic from '../assets/images/svg/addFile.svg'
 import Done from '../assets/images/svg/okay.svg'
 import Close from '../assets/images/svg/close.svg'
-import Equalizer from '../assets/images/svg/716.gif'
+//import Equalizer from '../assets/images/svg/716.gif'
+import Equalizer from './Equalizer'
 import SpeechRecognition, {useSpeechRecognition} from "react-speech-recognition";
 import FileUploadButton from './FileUploadButton'
 import FileUpload from './FileUpload'
@@ -66,12 +67,11 @@ function InputSelector({setTextFieldState, setDocText}) {
                     console.log("after " + transcript)
                     setSelectorState(SelectorStates.buttons);
                 }}/>
-                <img style={{height: '60%'}} src={Equalizer} alt=""/>
-                <img style={{height: '60%'}} src={Equalizer} alt=""/>
-                <img style={{height: '60%'}} src={Equalizer} alt=""/>
+                <Equalizer />
                 <BasicButton imageSource={Close} extraClass={'bad'} onClick={() => {
-                    resetTranscript()
+                    resetTranscript();
                     setSelectorState(SelectorStates.buttons);
+                    setDocText(' ');
                 }
                 }
                 />

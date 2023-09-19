@@ -24,6 +24,18 @@ html{
     height: 100%;
 }
 
+h3{
+    color: var(--main-text-color)
+}
+
+h4{
+    color: var(--add-text-color);
+}
+
+label{
+    color: white;
+}
+
 @media screen and (orientation:portrait){
     .split-container{
         flex-direction: column;
@@ -64,6 +76,10 @@ html{
     background:  var(--btn-color-hover);
 }
 
+.basic-button:active{
+    background: var(--btn-color-active);
+}
+
 .main-button{
     z-index: 2000;
 
@@ -94,6 +110,8 @@ button img{
     align-items: flex-start;
     vertical-align: top;
 
+    box-shadow: inset 0px 0px 10px rgba(0,0,0,0.2);
+
     font-size: 1.3rem;
 }
 
@@ -122,7 +140,6 @@ button img{
 
 .filter{
     font-family: 'Rubik';
-    color: white;
     font-size: 1.5rem;
 
     background: var(--filter-bg-color);
@@ -175,7 +192,6 @@ label input[type=checkbox]{
 
 .color-pick{
     font-family: 'Rubik';
-    color: white;
 
     height: 100px;
 
@@ -223,8 +239,8 @@ label input[type=checkbox]{
 
 .history-group h3{
     font-family: 'Rubik';
+    color: var(--add-text-color);
     font-size: 1.5rem;
-    color: white;
     text-align: center;
 }
 
@@ -237,21 +253,21 @@ label input[type=checkbox]{
 
 .stored-note{
     font-family: 'Rubik';
-    background: #6b5e88;
+    background: var(--stored-color);
     width: 100%;
     padding: 15px;
     border-radius: 20px;
 }
 
 .stored-note h3{
-    color: white;
     font-size: 1.5rem;
+    color: var(--main-text-color);
     text-align: start;
 }
 
 .stored-note div{
-    color: white;
     font-size: 2rem;
+    color: var(--main-text-color);
 }
 
 .meta-note{
@@ -280,7 +296,7 @@ label input[type=checkbox]{
 }
 
 .loading{
-    background: #542300;
+    background: var(--btn-color-active);
 }
 
 .loading img{
@@ -310,7 +326,6 @@ label input[type=checkbox]{
 
   .attachment{
     font-family: 'Rubik';
-    color: white;
     padding: 10px;
 
     background: #6b5e88;
@@ -360,3 +375,7 @@ label input[type=checkbox]{
   .none{
     display: none;
   }
+
+  .section::-webkit-scrollbar {
+    width: 10px;
+}
