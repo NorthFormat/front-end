@@ -3,6 +3,7 @@ import Spinner from '../assets/images/svg/spinner.svg'
 import Okay from '../assets/images/svg/okay.svg'
 import Error from "../assets/images/svg/close.svg"
 import {useEffect, useState} from 'react';
+import {checkBoxesStateHandler} from "../hooks/LocalStorageHandler";
 
 const ButtonStates = {
     active: {pic: Transfer, class: ''},
@@ -12,7 +13,7 @@ const ButtonStates = {
     error: {pic: Error, class: "error"}
 }
 
-function ConvertButton({textFieldState, setTextFieldState}) {
+function ConvertButton({textFieldState, setTextFieldState, checkBoxesState, setCheckBoxesState}) {
     const [buttonState, setButton] = useState(ButtonStates.active);
 
     useEffect(() => {
@@ -20,6 +21,15 @@ function ConvertButton({textFieldState, setTextFieldState}) {
             setButton(ButtonStates.active)
         }
     })
+
+    const handleCheckBoxesState = () => {
+        let newCheckBoxState = {
+            checkBox1: {checked: checkBoxesState.checkBox1.checked},
+            checkBox2: {checked: checkBoxesState.checkBox2.checked},
+            checkBox3: {checked: checkBoxesState.checkBox3.checked}
+        }
+        checkBoxesStateHandler(newCheckBoxState, setCheckBoxesState)
+    }
 
     const fakeFetch = async () => {
         setTextFieldState(false)
@@ -39,7 +49,14 @@ function ConvertButton({textFieldState, setTextFieldState}) {
 
     return (
         <button className={`basic-button main-button ${buttonState.class}`}
-                onClick={fakeFetch}>
+                onClick={() => {
+                    fakeFetch()
+                        .then(() => {handleCheckBoxesState()})
+                        .catch(error => {
+                            console.log(error)
+                        })
+                    handleCheckBoxesState(checkBoxesState, setCheckBoxesState)
+                }}>
             <img src={buttonState.pic} alt=""/>
         </button>
     )

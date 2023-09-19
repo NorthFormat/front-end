@@ -1,3 +1,4 @@
-export const checkBoxesStateHandler = async (checkBoxesStates) => {
-    await localStorage.setItem("checkBoxesState", JSON.stringify(checkBoxesStates))
+export const checkBoxesStateHandler = (checkBoxesStates, setCheckBoxesState) => {
+    localStorage.setItem("checkBoxesState", JSON.stringify(checkBoxesStates))
+    setCheckBoxesState(checkBoxesStates)
 }
