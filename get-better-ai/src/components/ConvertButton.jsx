@@ -4,7 +4,6 @@ import Okay from '../assets/images/svg/okay.svg'
 import Error from "../assets/images/svg/close.svg"
 import {useEffect, useState} from 'react';
 import {checkBoxesStateHandler} from "../hooks/LocalStorageHandler";
-import {highlightCorrected} from "../hooks/DifferencesFinder";
 
 const ButtonStates = {
     active: {pic: Transfer, class: ''},
