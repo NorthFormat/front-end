@@ -14,6 +14,7 @@ import ConvertButton from '../components/ConvertButton';
 import AlterLine from '../components/AlterLine';
 import {useEffect, useState} from "react";
 import SpeechRecognition, {useSpeechRecognition} from "react-speech-recognition";
+import {setHistory} from "../hooks/LocalStorageHandler";
 
 
 function FormatterPage() {
@@ -43,6 +44,7 @@ function FormatterPage() {
                 checkBox2: {checked: true},
                 checkBox3: {checked: true}
             })
+        setHistory()
     }, [])
 
     const handleLightTheme = () => {

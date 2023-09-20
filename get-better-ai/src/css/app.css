@@ -256,7 +256,7 @@ label input[type=checkbox]{
 
 #history-container{
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
 
     gap: 10px;
 }

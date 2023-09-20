@@ -5,13 +5,18 @@ function ResultField({resultResponse}) {
 
     useEffect(() => {
         setResult(resultResponse);
+        addToHistory(resultResponse);
     }, [resultResponse]);
 
-
-    // function addToHistory(newNote) {
-    //     let newHistory = JSON.parse(localStorage.getItem('history'))
-    //     localStorage.setItem('history', JSON.stringify(newHistory));
-    // }
+    function addToHistory(newNote) {
+        let newHistory = JSON.parse(localStorage.getItem('history3'))
+        let time = new Date()
+        let note = {
+            date: time,
+            text: newNote.text
+        }
+        note = JSON.stringify(note);
+    }
 
     return (
         <div className='text-field'

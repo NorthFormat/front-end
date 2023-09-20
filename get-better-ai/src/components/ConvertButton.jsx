@@ -3,7 +3,7 @@ import Spinner from '../assets/images/svg/spinner.svg'
 import Okay from '../assets/images/svg/okay.svg'
 import Error from "../assets/images/svg/close.svg"
 import {useEffect, useState} from 'react';
-import {checkBoxesStateHandler} from "../hooks/LocalStorageHandler";
+import {addNoteToHistory, checkBoxesStateHandler} from "../hooks/LocalStorageHandler";
 
 const ButtonStates = {
     active: {pic: Transfer, class: ''},
@@ -50,9 +50,10 @@ function ConvertButton({textFieldState, setTextFieldState, checkBoxesState, setC
                 if (!response.ok) throw response
                 return response.text()
             })
-            .then(response => {
+            .then(async response => {
                 setButton(ButtonStates.ready)
-                setResult(response)
+                await setResult(response)
+                addNoteToHistory(response)
             })
             .catch((error) => {
                 setButton(ButtonStates.error)

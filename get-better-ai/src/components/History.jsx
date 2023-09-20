@@ -1,26 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import StoredNote from './StoredNote'
+import {getHistory} from "../hooks/LocalStorageHandler";
 
-export default function History() {
-  const [historyData, setHistoryData] = useState([]);
+export default function History({updateHistoryHandle}) {
+    const [historyData, setHistoryData] = useState([]);
 
-  // useEffect(() => {
-  //   // Получаем данные из localStorage
-  //   const storedHistory = localStorage.getItem('history');
-  //   if (storedHistory) {
-  //     const parsedHistory = JSON.parse(storedHistory);
-  //     setHistoryData(parsedHistory);
-  //   }
-  // }, []);
+    useEffect(() => {
+        const storedHistory = getHistory()
+        setHistoryData(storedHistory)
+    }, []);
 
-  return (
-    <div className='history-group'>
-        {/*<h3>История исправлений</h3>*/}
-        <div id="history-container">
-            {/*{historyData.map((data, index) => (*/}
-            {/*  <StoredNote key={index} data={data} />*/}
-            {/*))}*/}
+    return (
+        <div className='history-group'>
+            <h3>История исправлений</h3>
+            <div id="history-container">
+                {historyData.map((note, index) => (
+                    <StoredNote key={index} data={note}/>
+                    ))}
+            </div>
         </div>
-    </div>
-  )
+    )
 }
