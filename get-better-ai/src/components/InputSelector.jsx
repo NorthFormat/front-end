@@ -12,7 +12,7 @@ import SpeechRecognition, {useSpeechRecognition} from "react-speech-recognition"
 import FileUploadButton from './FileUploadButton'
 import FileUpload from './FileUpload'
 import FilePreview from './FilePreview'
-import {decode, upload} from "../services/FileService";
+import {upload} from "../services/FileService";
 
 const SelectorStates = {
     buttons: {1: true, 2: false, 3: false},

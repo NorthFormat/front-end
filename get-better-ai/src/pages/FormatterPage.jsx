@@ -23,6 +23,7 @@ function FormatterPage() {
     const [resultResp, setResultField] = useState('')
     const [changedText, setChangedText] = useState(null)
     const [insertedValue, setInsertedValue] = useState('')
+    const [updateHistoryNotify, setHistoryNotify] = useState(false);
 
     const [RightHalfActive, setHalfActive] = useState(false);
     const [textFieldState, setTextFieldState] = useState(true)
@@ -69,6 +70,9 @@ function FormatterPage() {
                                        setCheckBoxesState={setCheckboxesState}
                                        setResult={setResultField}
                                        insertedValue={insertedValue}
+                                       setHistoryNotify={setHistoryNotify}
+                                       valueHistoryNotify={updateHistoryNotify}
+                                       
                         />
                     </div>
                     <AlterLine/>
@@ -82,7 +86,7 @@ function FormatterPage() {
                 <ColorChoose darkHandle={handleDarkTheme}
                              lightHandle={handleLightTheme}/>
                 <ResultField resultResponse={resultResp}/>
-                <History/>
+                <History updateHistoryNotification={updateHistoryNotify}/>
 
             </div>
             {/*<div onClick={() => {*/}

@@ -43,7 +43,7 @@ label{
 }
 
 .half {
-    height: 100%;
+    height: 100vh;
 
     flex: 1;
     transition: flex-grow 0.3s;

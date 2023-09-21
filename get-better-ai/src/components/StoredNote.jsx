@@ -1,7 +1,8 @@
 import React from 'react'
 import ClosePic from '../assets/images/svg/close.svg'
+import { deleteNote } from '../hooks/LocalStorageHandler'
 
-export default function StoredNote({data}) {
+export default function StoredNote({positionKey, updateHandler, valueHandler, data}) {
   return (
     <div className='stored-note'>
         <div className='meta-note'>

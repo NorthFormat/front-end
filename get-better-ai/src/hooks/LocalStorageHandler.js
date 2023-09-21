@@ -15,11 +15,17 @@ export const addNoteToHistory = (note) => {
     localStorage.setItem('history', newHistory)
 }
 
-export const getHistory = () => JSON.parse(localStorage.getItem("history"))
+export const getHistory = () => {return JSON.parse(localStorage.getItem("history"))}
 
 export const setHistory = () => {
     let startHistory = []
     if (!localStorage.getItem('history')) {
         localStorage.setItem('history', JSON.stringify(startHistory))
     }
+}
+
+export const deleteNote = (position, updateHandler) => {
+    localStorage.setItem(getHistory().splice(position, 1));
+    console.log("Удален1");
+    updateHandler();
 }

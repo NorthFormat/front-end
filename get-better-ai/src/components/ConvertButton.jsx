@@ -13,7 +13,7 @@ const ButtonStates = {
     error: {pic: Error, class: "error"}
 }
 
-function ConvertButton({textFieldState, setTextFieldState, checkBoxesState, setCheckBoxesState, setResult, insertedValue}) {
+function ConvertButton({textFieldState, setTextFieldState, checkBoxesState, setCheckBoxesState, setResult, insertedValue, setHistoryNotify, valueHistoryNotify}) {
     const [buttonState, setButton] = useState(ButtonStates.active);
 
     useEffect(() => {
@@ -22,7 +22,7 @@ function ConvertButton({textFieldState, setTextFieldState, checkBoxesState, setC
         }
     })
 
-    const fakeFetch = async () => {
+    const mainFetch = async () => {
 
         const body = {
             "text": insertedValue.toString(),
@@ -54,17 +54,21 @@ function ConvertButton({textFieldState, setTextFieldState, checkBoxesState, setC
                 setButton(ButtonStates.ready)
                 await setResult(response)
                 addNoteToHistory(response)
+                setHistoryNotify(!valueHistoryNotify)
             })
             .catch((error) => {
                 setButton(ButtonStates.error)
                 console.log(error)
             })
+
+        
     }
+
 
     return (
         <button className={`basic-button main-button ${buttonState.class}`}
                 onClick={() => {
-                    fakeFetch()
+                    mainFetch()
                             .catch(error => {
                             console.log(error)
                         })
