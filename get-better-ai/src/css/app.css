@@ -43,6 +43,8 @@ label{
 }
 
 .half {
+    height: 100%;
+
     flex: 1;
     transition: flex-grow 0.3s;
     padding: 60px;
@@ -97,7 +99,7 @@ button img{
 }
 
 .text-field{
-    height: 200px;
+    min-height: 150px;
     width: 100%;
     overflow-y: scroll;
     font-family: 'Rubik';
@@ -105,7 +107,6 @@ button img{
     border-radius: 20px;
     background: var(--textfield-color);
     padding: 20px;
-    min-height: 1.2rem;
     resize: vertical;
 
     display: flex;
