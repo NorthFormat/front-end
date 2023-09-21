@@ -71,6 +71,16 @@ label{
     border-radius: 20px;
     border: none;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    font-family: 'Rubik';
+    font-weight: 500;
+    font-size: 2rem;
+    color: white;
+
     transition: 0.3s ease;
 }
 
@@ -403,4 +413,12 @@ label input[type=checkbox]{
 ::-webkit-scrollbar-thumb {
     background-color: #1e008a; /* Цвет скроллбара */
     border-radius: 5px; /* Скруглить углы ползунка */
+}
+
+.inactive{
+    background: rgb(82, 80, 80);
+}
+
+.inactive:hover{
+    background: rgb(82, 80, 80);
 }

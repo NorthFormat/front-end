@@ -17,8 +17,9 @@ export default function History({updateHistoryNotification}) {
     <div className='history-group'>
         <h3>История исправлений</h3>
         <div id="history-container">
-            {historyData.slice(-5).map((data, index) => (
-              <StoredNote key={index} data={data}/>
+            { 
+              historyData.slice(-5).map((data, index) => (
+              <StoredNote key={index} data={data} positionKey={historyData.length - 5 + index}/>
             ))}
         </div>
     </div>

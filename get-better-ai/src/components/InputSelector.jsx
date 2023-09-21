@@ -56,7 +56,7 @@ function InputSelector({setTextFieldState, setDocText}) {
                     />;
                     setFile(component);
                 }} imageSource={DocPic} setDocText={setDocText}/>
-                <BasicButton imageSource={CamPic}/>
+                <BasicButton imageSource={CamPic} extraClass={'inactive'}/>
             </div>
             <div id='voice-group' className={`input-selector ${selectorState["2"] ? '' : 'hidden'}`}>
                 <BasicButton imageSource={Done} extraClass={'good'} onClick={() => {
@@ -67,7 +67,7 @@ function InputSelector({setTextFieldState, setDocText}) {
                 <BasicButton imageSource={Close} extraClass={'bad'} onClick={() => {
                     resetTranscript();
                     setSelectorState(SelectorStates.buttons);
-                    setDocText(' ');
+                    setDocText('');
                 }
                 }
                 />

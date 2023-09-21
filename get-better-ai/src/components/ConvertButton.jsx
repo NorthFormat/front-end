@@ -51,9 +51,10 @@ function ConvertButton({textFieldState, setTextFieldState, checkBoxesState, setC
                 return response.text()
             })
             .then(async response => {
+                let shortedResponse = response.slice(1, -1)
                 setButton(ButtonStates.ready)
-                await setResult(response)
-                addNoteToHistory(response)
+                await setResult(shortedResponse)
+                addNoteToHistory(shortedResponse)
                 setHistoryNotify(!valueHistoryNotify)
             })
             .catch((error) => {

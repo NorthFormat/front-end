@@ -15,6 +15,7 @@ import AlterLine from '../components/AlterLine';
 import {useEffect, useState} from "react";
 import SpeechRecognition, {useSpeechRecognition} from "react-speech-recognition";
 import {setHistory} from "../hooks/LocalStorageHandler";
+import DownloadButton from '../components/DownloadButton';
 
 
 function FormatterPage() {
@@ -86,6 +87,11 @@ function FormatterPage() {
                 <ColorChoose darkHandle={handleDarkTheme}
                              lightHandle={handleLightTheme}/>
                 <ResultField resultResponse={resultResp}/>
+                <div className='input-selector'>
+                    <DownloadButton text={resultResp} />
+                </div>
+                
+
                 <History updateHistoryNotification={updateHistoryNotify}/>
 
             </div>
