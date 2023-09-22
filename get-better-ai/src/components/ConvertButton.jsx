@@ -44,7 +44,7 @@ function ConvertButton({textFieldState, setTextFieldState, checkBoxesState, setC
         setTextFieldState(false)
 
         await setButton(ButtonStates.loading)
-        fetch("https://84a7-95-84-25-131.ngrok-free.app/changetext", options)
+        fetch("https://53b9-95-84-25-131.ngrok-free.app/changetext", options)
             .then(response => {
                 setTextFieldState(false)
                 if (!response.ok) throw response
