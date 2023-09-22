@@ -92,7 +92,7 @@ function FormatterPage() {
                 </div>
                 
 
-                <History updateHistoryNotification={updateHistoryNotify}/>
+                <History updateHistoryNotification={updateHistoryNotify} setHistoryNotify={setHistoryNotify}/>
 
             </div>
             {/*<div onClick={() => {*/}

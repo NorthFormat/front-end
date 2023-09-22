@@ -22,16 +22,16 @@ export default function StoredNote({positionKey, updateHandler, valueHandler, da
     return formattedDate;
   }
 
-  function deleteNote(position){
-    console.log(`Удален ${position} элемент : ${JSON.parse(localStorage.getItem('history'))[position].text}`)
-    
+  function updateHandling(){
+    updateHandler(!valueHandler);
   }
+
 
   return (
     <div className='stored-note'>
         <div className='meta-note'>
             <h3>{formatDateToCustomFormat(data.date)}</h3>
-            <button onClick={()=> {}} className='inactive'><img src={ClosePic} alt="" /></button>
+            <button onClick={()=> {deleteNote(positionKey); updateHandling()}} className='inactive'><img src={ClosePic} alt="" /></button>
         </div>
         
         <div>{data.text}</div>

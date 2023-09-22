@@ -31,7 +31,19 @@ export const setHistory = () => {
     }
 }
 
-export const deleteNote = (position) => {
-    localStorage.setItem(localStorage.getItem('history').splice(position, 1));
-    
+export const deleteNote = (position, updateHandler) => {
+  let strge = localStorage.getItem('history');
+  if (strge) {
+    let data = JSON.parse(strge);
+    if (data[position]) {
+      console.log(`Удален ${position} элемент : ${data[position].text}`);
+      data.splice(position, 1);
+      localStorage.setItem('history', JSON.stringify(data));
+      if (typeof updateHandler === 'function') {
+        updateHandler(true); // Вызываем обновление истории, только если updateHandler является функцией
+      }
+    } else {
+      console.error(`Попытка удалить несуществующий элемент с позицией ${position}`);
+    }
+  }
 }
